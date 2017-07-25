@@ -18,7 +18,7 @@ Following hardware and software resource needed.**1. Environment:**
 
 * Network: Calico
 
-* Storage: Ceph/GlusterFS/GPFS/etc
+* Storage: GlusterFS/GPFS/etc（need storage&network squad input）
 		      
 		      
 		      
@@ -141,9 +141,13 @@ The performance test will be executed in each Sprint and each of the squard shou
    1) Network TPS comparation test(network&storage squad):
       
         a. compare the container to container network TPS with container to host
+        
         b. compare the container to container network TPS with host to host
+        
         c. compare the network TPS with ipip_enable and ipip_disable
+        
         d. compare the different network solution with other vendor 
+        
 
    2) Disk I/O(network&storage squad)
         
