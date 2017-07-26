@@ -102,10 +102,10 @@ The performance test will be executed in each Sprint and each of the squard shou
 
 | Priority | Performance Metric| Criteria  | Comments |
 |------|------|------|------|
-| P1 | cli/api response | ~1s | |
+| P1 | cli/api response | <1s | |
 | P1 | GUI response |  | need platform-ui squad input|
-| P1 | Pod start time | ~500s | 95% pod ready |
-| P1 | Service discover time | ~2s | |
+| P1 | Pod start time | <500s | 95% pod ready |
+| P1 | Service discover time | <2s | |
 | P1 | CRUD users | api response time within 1s| |
 | P2 | CRUD namespace | api response time within 1s | |
 | P1 | Network TPS | | need network&storage squad input |
@@ -212,10 +212,32 @@ The test will be handled in test Sprint 3 before external release and Oct releas
 	 1). Service reliability(start concurrent client to send request, and during the service recive the request, shutdown some of pods to see the error request percentage.)
     
 
-### Longevity and Stress Test
+### Longevity Test
 
 
-The Longevity and Stress test will started from Sprint 1 and finished before RC sanity check, and each test cycle will run in 7*24 hours.
+Each squad can have it's own longevity test environment for their specify cases and maintain the environment by each squad.
+
+
+And below is test environment proposal for Infrastructure squad.
+
+**Environment:**
+
+* Icp:  
+        
+        1 master nodes + 3～5 x86 workers.
+
+* Docker: 1.17.06-ce
+
+* OS: Ubuntu 16.04 LTS
+
+* Network: Calico
+
+* Storage: storage&network squad need to handle this part.
+
+
+**Test Strategy**
+
+The Longevity test will started from Sprint 1 and finished before RC sanity check, and each test cycle will run in 7*24 hours.
 
 And the main focus was on cluster healty like: monitory the cluster resource usage like cpu/memory usage to ensure no leak.
 
@@ -230,6 +252,36 @@ And the main focus was on cluster healty like: monitory the cluster resource usa
 
 * Any longevity cases with service?(need service squad input)
 
+### Stess Test
+
+**For Infrastructure squad:**
+
+1) Community limit the pod number to 110 of each worker node, so Infrastructure squad did not need to do extra stress test on this part.
+
+2) Ingrastructure squad have some cases coverd during the scaliability and performance test, so no need to pick out those cases here。
+
+
+**For Storage&Network squad:**
+
+Need to handle the network stress test in one of sprint as the most of customer may care about the network stabilization when during the heavy network I/O. need storage&network squad input here.
+
+**For service squad:**
+
+Need to handle the service stress test in one of sprint as we need to know service health status during the heavy request from client. need service squad input here.
+
+**For ELK squad:**
+
+We may need to know the status of ELK during the stress test, need ELK squad input here.
+
+
 ### Feature integration Test
 
 * Each of squad focal should go through the new features delivery in each sprint and consider which features have interaction with others, pick them out and do interaction test to make sure the interaction quality.
+
+
+### End to End Test
+
+For Infrastructure squad, GuangYa Liu will be China focal and rebecca will be Toronto focal to collect the customer user cases so that we can do some E2E cases related to customer user cases.
+
+
+For other squad, squad leader should take this responsibility to collect the customer user cases.
