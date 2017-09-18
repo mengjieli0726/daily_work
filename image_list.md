@@ -1,4 +1,4 @@
-#Infrastrature squrd.
+# Infrastrature squrd.
 
 
 | Imange name | Base Image| components | Squrd  | effort |
@@ -27,7 +27,7 @@
 
 
 
-#Other squrd.
+# Other squrd.
 
 **Other images**
 
