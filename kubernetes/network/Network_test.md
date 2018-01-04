@@ -1,5 +1,8 @@
-kc run --tty -i  --image=hchenxa1986/qperf:latest --image-pull-policy="IfNotPresent" bash
+The qperf test the two nodes, need client and server: 
 
-kc run --tty -i  --image=hchenxa1986/qperf:latest --image-pull-policy="IfNotPresent" bash1
+
+Server: kc run --tty -i  --image=hchenxa1986/qperf:latest --image-pull-policy="IfNotPresent" bash
+
+Clent: kc run --tty -i  --image=hchenxa1986/qperf:latest --image-pull-policy="IfNotPresent" bash1
 
 qperf -oo msg_size:1:64K:*2  10.1.186.137 tcp_bw tcp_lat
